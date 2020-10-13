@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo ">>> $NODE"
+
 # Go to the BitBar plugins directory
 cd "$(defaults read com.matryer.BitBar pluginsDirectory)"
 
@@ -27,8 +29,9 @@ cd ..
 if ! [ -L "./bitactions.sh" ]; then
 	echo "Creating initialization bitbar script..."
 	echo -e '#!/bin/bash \n' > bitactions.sh
-	NODE=${1:-node} 
-	echo "$NODE bitactions/bin/cli.js" >> bitactions.sh
+	NODE=${NODE:-node}
+	echo "cd $PWD/bitactions/" >> bitactions.sh
+	echo "$NODE $PWD/bitactions/bin/cli.js" >> bitactions.sh
 	chmod 755 bitactions.sh
 	echo "Done."
 fi
@@ -36,4 +39,3 @@ fi
 # Refresh the plugin
 echo "Refreshing plugin..."
 open "bitbar://refreshPlugin?name=bitactions.js"
-echo "Plugin refreshed."
