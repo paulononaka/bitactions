@@ -38,4 +38,5 @@ fi
 
 # Refresh the plugin
 echo "Refreshing plugin..."
-open "bitbar://refreshPlugin?name=bitactions.js"
+open "bitbar://refreshPlugin?name=bitactions.sh"
+echo "Done."
