@@ -1,0 +1,32 @@
+{
+  "name": "bitactions",
+  "version": "1.0.0",
+  "description": "A plugin for BitBar that displays Github Actions status in your Mac OS X Menu Bar",
+  "keywords": [
+    "Github Actions",
+    "GitHub CI/CD",
+    "GitHub Actions Monitor",
+    "GitHub Actions Radiator",
+    "github-actions",
+    "bitbar"
+  ],
+  "main": "main.js",
+  "scripts": {
+    "start": "node bin/cli.js"
+  },
+  "bin": {
+    "bitactions": "bin/cli.js"
+  },
+  "author": "paulononaka@gmail.com",
+  "homepage": "https://github.com/paulononaka/bitactions",
+  "bugs": "https://github.com/paulononaka/bitactions/issues",
+  "repository": "github:paulononaka/bitactions",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "humanize-duration": "^3.24.0",
+    "moment": "^2.29.1",
+    "rcfile": "^1.0.3",
+    "simple-git": "^2.21.0"
+  }
+}
