@@ -40,7 +40,11 @@ You can get it from the end of your github URL. `https://github.com/paulononaka/
 ## watchRepoDir
 // Optional - Ex: /Users/paulononaka/codes/bitactions
 
-Set it if you wish to include a status specifically for a branch that you are working on. If you set the option a submenu with the workflow filtered by the branch that you are working will be included. If you wish the status in your Mac OS X Menu Bar to show only this branch, set `statusMode` as `branch`.
+Say you have a workflow that trigger `on: pull_request`. GitHub Actions keeps one workflow for all pushed branches so the last run might not be the branch that you are working on locally, the one that you really want to monitor.
+
+So set this option only if you wish to include a status specifically for a branch that you are working on locally. If you set it a submenu with the workflow filtered by the branch that you are working will be watched. If you wish the status in your Mac OS X Menu Bar to show only this branch, set `statusMode` as `branch`.
+
+Please notice that this feature uses the local branch from a local repo, so if you change the branch locally the submenu will attempt to search for that branch and if it isn't a pull request branch it won't be displayed.
 
 ## statusMode
 // Optional - branch, rotate or summarized. Ex: summarized
