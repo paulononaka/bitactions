@@ -26,17 +26,17 @@ echo "Dependencies installed."
 
 # Create the symlink if it doesn't exist
 cd ..
-if ! [ -L "./bitactions.sh" ]; then
+if ! [ -L "./bitactions.10s.sh" ]; then
 	echo "Creating initialization bitbar script..."
-	echo -e '#!/bin/bash \n' > bitactions.sh
+	echo -e '#!/bin/bash \n' > bitactions.10s.sh
 	NODE=${NODE:-node}
-	echo "cd $PWD/bitactions/" >> bitactions.sh
-	echo "$NODE $PWD/bitactions/bin/cli.js" >> bitactions.sh
-	chmod 755 bitactions.sh
+	echo "cd $PWD/bitactions/" >> bitactions.10s.sh
+	echo "$NODE $PWD/bitactions/bin/cli.js" >> bitactions.10s.sh
+	chmod 755 bitactions.10s.sh
 	echo "Done."
 fi
 
 # Refresh the plugin
 echo "Refreshing plugin..."
-open "bitbar://refreshPlugin?name=bitactions.sh"
+open "bitbar://refreshPlugin?name=bitactions.10s.sh"
 echo "Done."
