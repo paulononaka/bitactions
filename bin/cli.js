@@ -1,13 +1,13 @@
 #! /usr/bin/env node
 
-// <bitbar.title>GitHub Actions Status</bitbar.title>
-// <bitbar.version>v1.0</bitbar.version>
-// <bitbar.author>Paulo Henrique Nonaka</bitbar.author>
-// <bitbar.author.github>paulononaka</bitbar.author.github>
-// <bitbar.desc>GitHub Actions status</bitbar.desc>
-// <bitbar.image>https://github.com/paulononaka/bitactions/blob/master/images/sample.png?raw=true</bitbar.image>
-// <bitbar.dependencies>node</bitbar.dependencies>
-// <bitbar.abouturl>https://github.com/paulononaka/bitactions</bitbar.abouturl>
+// <xbar.title>GitHub Actions Status</xbar.title>
+// <xbar.version>v1.0</xbar.version>
+// <xbar.author>Paulo Henrique Nonaka</xbar.author>
+// <xbar.author.github>paulononaka</xbar.author.github>
+// <xbar.desc>GitHub Actions status</xbar.desc>
+// <xbar.image>https://github.com/paulononaka/bitactions/blob/master/images/sample.png?raw=true</xbar.image>
+// <xbar.dependencies>node</xbar.dependencies>
+// <xbar.abouturl>https://github.com/paulononaka/bitactions</xbar.abouturl>
 
 const main = require('../lib/main')
 

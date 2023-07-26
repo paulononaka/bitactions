@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-echo ">>> $NODE"
+export NODE=$(which node)
 
 # Go to the BitBar plugins directory
-cd "$(defaults read com.matryer.BitBar pluginsDirectory)"
+cd "$HOME/Library/Application Support/xbar/plugins/"
 
 # If already installed, check for version updates
 if [ -d "bitactions" ]; then
@@ -26,17 +26,10 @@ echo "Dependencies installed."
 
 # Create the symlink if it doesn't exist
 cd ..
-if ! [ -L "./bitactions.10s.sh" ]; then
-	echo "Creating initialization bitbar script..."
-	echo -e '#!/bin/bash \n' > bitactions.10s.sh
-	NODE=${NODE:-node}
-	echo "cd $PWD/bitactions/" >> bitactions.10s.sh
-	echo "$NODE $PWD/bitactions/bin/cli.js" >> bitactions.10s.sh
-	chmod 755 bitactions.10s.sh
-	echo "Done."
-fi
+echo "Creating initialization xbar script..."
+echo -e '#!/bin/bash \n' > bitactions.1m.sh
+echo "cd \"$PWD/bitactions/\"" >> bitactions.1m.sh
+echo "$NODE \"$PWD/bitactions/bin/cli.js\"" >> bitactions.1m.sh
+chmod +x bitactions.1m.sh
 
-# Refresh the plugin
-echo "Refreshing plugin..."
-open "bitbar://refreshPlugin?name=bitactions.10s.sh"
-echo "Done."
+echo "Done."	

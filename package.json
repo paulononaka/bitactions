@@ -8,7 +8,7 @@
     "GitHub Actions Monitor",
     "GitHub Actions Radiator",
     "github-actions",
-    "bitbar"
+    "xbar"
   ],
   "main": "bin/cli.js",
   "scripts": {

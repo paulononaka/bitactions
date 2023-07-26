@@ -6,57 +6,79 @@ Inspired by [Hukum](https://github.com/abskmj/hukum) BitActions is a BitBar plug
 
 ![BitActions example showing GitHub Actions status on macOS menu](images/sample.png)
 
-# Installation
+## Prerequisites
 
-Make sure you have `node` and `npm`, then install with the bundled install script:
+- [Node.js](https://nodejs.org/)
+- [XBar](https://xbarapp.com/)
+- Open xbar
+
+## Installation
+
+Make sure you have `node` and `npm`, then run:
 ```sh
-$ curl https://raw.githubusercontent.com/paulononaka/bitactions/master/install.sh | NODE=$(which node) bash
+$ curl https://raw.githubusercontent.com/paulononaka/bitactions/master/install.sh
 ```
 
-# Configuration
-Create a `.bitactionsrc` file in your home with the following contents:
+## Configuration
+
+Open the plugin folder 
+
+```sh
+cd "$HOME/Library/Application Support/xbar/plugins/bitactions"
+```
+
+and create a `.bitactionsrc` file in your $HOME with the following contents:
 
 ```json
 {
-    "githubToken": "<token>",
-    "githubRepoName": "<repo-name>", 
-    "watchRepoDir": "<repo-name>",   
-    "statusMode": "summarized"            
+    "githubToken": "<Git hub token>. Ex: aaa_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "githubRepoName": "<Github owner/repo_name. Ex: paulononaka/bitactions>",
+    "watchBranchName": "<Branch name to watch when local branch does not have any runs on GitHub. Ex: main>",
+    "localRepoPath": "<Full path of your repo in your local machine. This will serve to automatically watch the branch you are. Ex: /Users/paulononaka/codes/bitactions>",
+    "statusMode": "<branch|summary|rotate>. Ex: branch"
 }
 ```
 
 ## githubToken
-// Optional for public repos, required for privated ones - A forty-digit alphanumeric string
+// **Optional** for public repos, required for privated ones - A forty-digit alphanumeric string
 
-BitActions uses [Github Actions API](https://docs.github.com/en/rest/reference/actions). It is possible to use these APIs without any authentication for public repositories. However, for unauthenticated requests, the rate limit allows for up to 60 requests per hour (Details at [docs.github.com](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting)) which can exhaust quickly. Authenticated requests have higher limits, up to 5000 requests per hour.
 
-Follow these steps at [docs.github.com](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) to create a personal token. The token does not need to have any specific scope for public repositories. However, the token  needs to have `repo - Full control of private repositories` scope for private repositories.
+TLTR: Follow these steps at [docs.github.com](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) to create a personal token (classic).
+
+BitActions uses [Github Actions API](https://docs.github.com/en/rest/reference/actions). It is possible to use these APIs without any authentication for public repositories. However, for unauthenticated requests, the rate limit allows for up to 60 requests per hour (Details at [docs.github.com](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting)). Authenticated requests have higher limits, up to 5000 requests per hour.
+
+The token does not need to have any specific scope for public repositories. However, the token  needs to have `repo - Full control of private repositories` scope for private repositories.
 
 ## githubRepoName
-// Required - Ex: paulononaka/bitactions
+// **Required** - Ex: paulononaka/bitactions
 
-You can get it from the end of your github URL. `https://github.com/paulononaka/bitactions` becames `paulononaka/bitactions`.
+You can get it from the end of your github URL. Ex: `https://github.com/paulononaka/bitactions` becomes `paulononaka/bitactions`.
 
-## watchRepoDir
-// Optional - Ex: /Users/paulononaka/codes/bitactions
+## localRepoPath
+// **Optional** - Ex: /Users/paulononaka/codes/bitactions
 
-Say you have a workflow that trigger `on: pull_request`. GitHub Actions keeps one workflow for all pushed branches so the last run might not be the branch that you are working on locally, the one that you really want to monitor.
+Say you have a workflow that triggers `on: pull_request`. GitHub Actions keeps one workflow for all pushed branches so the last run might not be the branch that you are working on locally, the one you really want to monitor.
 
-So set this option only if you wish to include a status specifically for a branch that you are working on locally. If you set it a submenu with the workflow filtered by the branch that you are working will be watched. If you wish the status in your Mac OS X Menu Bar to show only this branch, set `statusMode` as `branch`.
+Given that, set this option if you wish to watch specifics branches you are working on locally. If you set it, a submenu with the workflow will monitor this branch. If you wish the status also appears in the main Mac OS menu bar, set `statusMode` to `branch`.
 
-Please notice that this feature uses the local branch from a local repo, so if you change the branch locally the submenu will attempt to search for that branch and if it isn't a pull request branch it won't be displayed.
+Please notice that this feature uses the local branch from a local repo, so if you change the branch locally the submenu will attempt to search for that branch and if it isn't pushed yet (has no runs) it won't be displayed.
+
+## watchBranchName
+// **Optional** - Ex: main
+
+This will be the monitored branch if you set `statusMode` to `branch`, but your local branch has no runs yet.
 
 ## statusMode
-// Optional - branch, rotate or summarized. Ex: summarized
+// **Optional** - branch, rotate or summary. Ex: summary
 
 Choose how the macOS menu bar should appear in the macOS bar menu:
 
-- summarized - Shows all workflows at once, without names.
+- summary - Shows all workflows at once, without names.
 - rotate - Rotates the workflow with its name, showing one at a time.
-- branch - Fixes the status to the branch that you are working on your `watchRepoDir`.
+- branch - Fixes the status to the branch you are working on your `localRepoPath`.
 
 # How it works?
-BitActions uses [Github Actions API](https://docs.github.com/en/rest/reference/actions) to get the related workflow to the recent git push and its status. It keeps on calling the APIs every time your BitBar refreshes.
+BitActions uses [Github Actions API](https://docs.github.com/en/rest/reference/actions) to get the related workflow to the recent git push and its status. It keeps on calling the APIs every time your Xbar refreshes.
 
 # Contributing
 
