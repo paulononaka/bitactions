@@ -1,7 +1,7 @@
 {
     "githubToken": "<Git hub token>. Ex: aaa_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     "githubRepoName": "<Github owner/repo_name. Ex: paulononaka/bitactions>",
-    "watchBranchName": "<Branch name to watch when local branch does not have any runs on GitHub. Ex: main>",
     "localRepoPath": "<Full path of your repo in your local machine. This will serve to automatically watch the branch you are. Ex: /Users/paulononaka/codes/bitactions>",
+    "watchBranchName": "<Branch name to watch when local branch does not have any runs on GitHub. Ex: main>",
     "statusMode": "<branch|summary|rotate>. Ex: branch"
 }
