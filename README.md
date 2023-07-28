@@ -27,8 +27,8 @@ Create a `.bitactionsrc` file in your $HOME with the following content:
 ```json
 {
     "githubToken": "<Your personal classic Git hub token. Ex: aaa_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>",
-    "githubRepoName": "You can get it from the end of the GithHub URL of the project you want to watch.. Ex: acme_corporation/my_project>",
-    "localRepoPath": "<Full path of your repo in your local machine. This will serve to automatically watch the branch you are. Ex: /Users/paulononaka/codes/bitactions>",
+    "githubRepoName": "<You can get it from the end of the GithHub URL of the project you want to watch. Ex: acme_corporation/my_project>",
+    "localRepoPath": "<Full path of your repo in your local machine. This will serve to automatically watch the branch you are. Ex: /Users/paulononaka/codes/my_project>",
     "watchBranchName": "<Branch name to watch when local branch does not have any runs on GitHub. Ex: main>",
     "statusMode": "<branch OR summary OR rotate. Ex: branch>"
 }
@@ -46,13 +46,13 @@ BitActions uses [Github Actions API](https://docs.github.com/en/rest/reference/a
 The token does not need to have any specific scope for public repositories. However, the token  needs to have `repo - Full control of private repositories` scope for private repositories.
 
 ## githubRepoName
-// **Required** - Github owner/name. Ex: paulononaka/bitactions
+// **Required** - Github repo name. Ex: acme_corporation/my_project
 
 You can get it from the end of the GithHub URL of the project you want to watch.
 Ex: `https://github.com/acme_corporation/my_project` becomes `acme_corporation/my_project`.
 
 ## localRepoPath
-// **optional** - Ex: /Users/paulononaka/codes/bitactions
+// **optional** - Ex: /Users/paulononaka/codes/my_project
 
 Say you have a workflow that triggers `on: pull_request`. GitHub Actions keeps one workflow for all pushed branches so the last run might not be the branch that you are working on locally, the one you really want to monitor.
 
